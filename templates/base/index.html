@@ -1,0 +1,359 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <title>Render Farm</title>
+        <script
+            src="https://kit.fontawesome.com/7746045133.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <header>
+            <div class="hero">
+                <nav>
+                    <img src="{% static 'images/logo.png' %}" class="logo" />
+                    <ul>
+                        <li><a href="{% url 'base' %}">Home</a></li>
+                        <li>|</li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li>|</li>
+                        <li><a href="">Support</a></li>
+                        <li>|</li>
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'upload' %}"
+                                >{{ user.username|title}}</a
+                            >
+                        </li>
+                        <li>|</li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="#signin-p">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <hr />
+            </div>
+        </header>
+        <main>
+            <div>
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li class="alert">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </div>
+            <div class="main">
+                <div class="slider">
+                    <div class="slides">
+                        <input type="radio" name="radio-btn" id="radio1" />
+                        <input type="radio" name="radio-btn" id="radio2" />
+                        <input type="radio" name="radio-btn" id="radio3" />
+                        <div class="slide first">
+                            <img
+                                src="{% static 'images/showcase1.png' %}"
+                                alt=""
+                            />
+                        </div>
+                        <div class="slide">
+                            <img
+                                src="{% static 'images/showcase4.png' %}"
+                                alt=""
+                            />
+                        </div>
+                        <div class="slide">
+                            <img
+                                src="{% static 'images/showcase3.png' %}"
+                                alt=""
+                            />
+                        </div>
+
+                        <div class="navigation-auto">
+                            <div class="auto-btn1"></div>
+                            <div class="auto-btn2"></div>
+                            <div class="auto-btn3"></div>
+                        </div>
+                    </div>
+                    <div class="navigation-manual">
+                        <label for="radio1" class="manual-btn"></label>
+                        <label for="radio2" class="manual-btn"></label>
+                        <label for="radio3" class="manual-btn"></label>
+                    </div>
+                </div>
+            </div>
+
+            <script type="text/javascript">
+                var counter = 1;
+                setInterval(function () {
+                    document.getElementById("radio" + counter).checked = true;
+                    counter++;
+                    if (counter > 4) {
+                        counter = 1;
+                    }
+                }, 5000);
+            </script>
+
+            <div class="text-container">
+                <h3>Cloud Render Farm is the Future</h3>
+                <p id="signin-p">
+                    Cloud Render Farming is the best technology for everyone's
+                    needs, whether it be a student, studio or a freelancer. With
+                    our latest infrastructure in the field of Cloud Rendering we
+                    are trusted Rendering Service that exactly knows what you
+                    need; easy usage, no waiting queue, fast and reliable
+                    rendering, low prices and support at all times.
+                    <br /><br />
+                    <em>"Register with us and Upload your files today!"</em>
+                </p>
+            </div>
+
+            {% if not user.is_authenticated %}
+            <div class="sign">
+                <div class="popup" id="popup-1">
+                    <form action="/api/signin" method="post">
+                        {% csrf_token %}
+                        <div class="content">
+                            <div class="close-btn" onclick="togglePopup()">
+                                X
+                            </div>
+                            <h1>Sign in</h1>
+                            <div class="input-field">
+                                <input
+                                    placeholder="Username"
+                                    class="validate"
+                                    type="text"
+                                    name="username"
+                                />
+                            </div>
+                            <div class="input-field">
+                                <input
+                                    placeholder="Password"
+                                    class="validate"
+                                    type="password"
+                                    name="password"
+                                />
+                            </div>
+                            <button class="second-button" type="submit">
+                                Sign In
+                            </button>
+                            <p>
+                                Don't have an account?<br />
+                                <a href="{% url 'signup' %}">Sign Up</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+                <button onclick="togglePopup()" class="first-button">
+                    Sign In
+                </button>
+                <script>
+                    function togglePopup() {
+                        document
+                            .getElementById("popup-1")
+                            .classList.toggle("active");
+                    }
+                </script>
+                <br />
+                <br />
+            </div>
+            {% else %}
+            <div class="sign">
+                <a href="{% url 'upload' %}"
+                    ><button class="first-button">Upload</button></a
+                >
+            </div>
+            {% endif %}
+            <div>
+                <div class="team">
+                    <br />
+                    <h1 class="team_head">Team Members</h1>
+                </div>
+                <div class="team-col">
+                    <ul class="fsd">
+                        <li class="fsdli">
+                            <h3>Full-Stack Developers</h3>
+                        </li>
+
+                        <li class="fsdli">
+                            <h3>Front-End Developers</h3>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="team-col">
+                    <ul class="team-name">
+                        <li class="name">
+                            <h3>Ishan Jaiswal</h3>
+                        </li>
+
+                        <li class="name">
+                            <h3>Arjun Verma</h3>
+                        </li>
+                    </ul>
+                </div>
+                <div class="team-col">
+                    <ul class="team-name">
+                        <li class="name">
+                            <h3>Naman Shukla</h3>
+                        </li>
+
+                        <li class="name">
+                            <h3>Shreya Jha</h3>
+                        </li>
+                    </ul>
+                </div>
+                <div class="team-col">
+                    <ul class="team-name-l">
+                        <li class="name-l">
+                            <h3></h3>
+                        </li>
+                        <li class="name-l">
+                            <h3>Shashikant Gupta</h3>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <hr />
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Support</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li>
+                                <img
+                                    src="{% static 'images/logo.png' %}"
+                                    class="logo"
+                                />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>get help</h4>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>follow us</h4>
+                        <div class="social-links">
+                            <a
+                                href="https://github.com/IJPenguin"
+                                target="_blank"
+                                ><i class="fa-brands fa-github"></i
+                            ></a>
+                            <br />
+                            <a
+                                href="https://twitter.com/Ishan690"
+                                target="_blank"
+                                ><i class="fab fa-twitter"></i
+                            ></a>
+                            <br />
+                            <a
+                                href="https://www.instagram.com/namanshukla9838/"
+                                target="_blank"
+                                ><i class="fab fa-instagram"></i
+                            ></a>
+                            <br />
+                            <a
+                                href="https://www.linkedin.com/in/ishanjswl/"
+                                target="_blank"
+                                ><i class="fab fa-linkedin-in"></i
+                            ></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Suggestions</h4>
+                        <div class="suggestions">
+                            <form action="/api/suggestions" method="post">
+                                {% csrf_token %}
+                                <div class="input-group">
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        required
+                                    />
+                                    <label class="sug" for="name"
+                                        ><i class="fa-solid fa-user"></i> Your
+                                        Name</label
+                                    >
+                                </div>
+                                <div class="input-group">
+                                    <input
+                                        type="text"
+                                        id="number"
+                                        name="number"
+                                        required
+                                    />
+                                    <label class="sug" for="number"
+                                        ><i class="fa-solid fa-phone"></i> Your
+                                        Ph. Number</label
+                                    >
+                                </div>
+                                <div class="input-group">
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        required
+                                    />
+                                    <label class="sug" for="email"
+                                        ><i class="fa-solid fa-envelope"></i>
+                                        Your Email Id.</label
+                                    >
+                                </div>
+                                <div class="input-group">
+                                    <textarea
+                                        id="message"
+                                        name="message"
+                                        rows="8"
+                                        required
+                                    ></textarea>
+                                    <label class="sug" for="message"
+                                        ><i
+                                            class="fa-sharp fa-solid fa-comments"
+                                        ></i>
+                                        Your Suggestions</label
+                                    >
+                                </div>
+                                <button class="send" type="submit">
+                                    Send
+                                    <i
+                                        class="fa-sharp fa-solid fa-paper-plane"
+                                    ></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="message">&#169; Render Farm 2022-2022</p>
+        </footer>
+    </body>
+    <script>
+        alerts = document.querySelectorAll(".alert");
+        if (alerts) {
+            setTimeout(() => {
+                alerts.forEach((alert) => {
+                    alert.remove();
+                });
+            }, 6900);
+        }
+        //nice
+    </script>
+</html>

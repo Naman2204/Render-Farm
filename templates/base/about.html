@@ -1,0 +1,212 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{% static 'css/about.css' %}" />
+        <title>About Us</title>
+        <script
+            src="https://kit.fontawesome.com/7746045133.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <header>
+            <div class="hero">
+                <nav>
+                    <img src="{% static 'images/logo.png' %}" class="logo" />
+                    <ul>
+                        <li><a href="{% url 'base' %}">Home</a></li>
+                        <li>|</li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li>|</li>
+                        <li><a href="">Support</a></li>
+                        <li>|</li>
+                        {% if user.is_authenticated %}
+                        <li>
+                            <a href="{% url 'upload' %}"
+                                >{{ user.username|upper }}</a
+                            >
+                        </li>
+                        <li>|</li>
+                        <li><a href="{% url 'logout' %}">Logout</a></li>
+                        {% else %}
+                        <li><a href="#signin-p">Login</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                <hr />
+            </div>
+        </header>
+        <main>
+            <div class="content">
+                <ul>
+                    <li><a href="#abt_rndr_frm">About Render Farm</a></li>
+                    <li><a href="#how_works">How It Works</a></li>
+                    <li>
+                        <a href="#how_impacts_work">How It Impacts Your Work</a>
+                    </li>
+                </ul>
+                <h3 class="about-head" id="abt_rndr_frm">About Render Farm</h3>
+                <p class="p1">
+                    A render farm is an interconnected computing cluster that
+                    utilizes High Performance Computing (HPC) to create
+                    computer-generated imagery (CGI), typically used for visual
+                    effects in the entertainment industry. Since parallel
+                    computing allows each frame or tile to be rendered
+                    individually, distributed rendering makes it possible to
+                    produce large quantities of CGI in a relatively short period
+                    of time.<br />
+                    Rendering high-resolution CGI takes a lot of processing
+                    power and can become a bottleneck. It may take hours to
+                    render a single image, or even months to render a
+                    feature-length animated film. Render farms can help offload
+                    or accelerate such tasks, freeing up valuable computer
+                    resources for much more productive and creative work.
+                </p>
+                <h3 class="how-works" id="how_works">How It Works</h3>
+                <p class="p2">
+                    A render farm is a huge collection of machines harnessed
+                    together to do one thing--render your 3D frames. But how do
+                    such computers render months worth of data in just hours.
+                    Well, they use nodes.Node is another word for a computer
+                    that is part of a host of computers whose sole purpose in
+                    life is to render. These nodes are controlled by a render
+                    management software--think of this program as the render
+                    overlord that tells all the nodes what to do. Each
+                    individual node can be instructed to render an individual
+                    frame, allowing multiple frames to be rendered at the same
+                    time.
+                </p>
+                <h3 class="how-impacts-work" id="how_impacts_work">
+                    How It Impacts Your Work
+                </h3>
+                <p class="p3">
+                    <u>1. Saves Time</u><br />
+                    &emsp;Saves your time by quickly rendering images.<br />
+                    <br />
+                    <u>2. Empowers further refinement </u><br />
+                    &emsp;It allows further refinement of characters or
+                    scenes<br />
+                    &emsp;which wouldn't be possible because of time
+                    constraits.<br />
+                    <br />
+                    <u>3. Expands lighting potential </u><br />
+                    &emsp;Multi bounce lighting is really difficult for
+                    computers to <br />&emsp;render that's why artist shy away
+                    from using it but with<br />&emsp;our render farm you can
+                    use as much multi bounce<br />&emsp;lighting as you want.
+                </p>
+                <img src="{% static 'images/farm.png' %}" class="photo" />
+            </div>
+        </main>
+        <footer class="footer">
+            <hr />
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Support</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li>
+                                <img
+                                    src="{% static 'images/logo.png' %}"
+                                    class="logo"
+                                />
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>get help</h4>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>follow us</h4>
+                        <div class="social-links">
+                            <a
+                                href="https://github.com/IJPenguin"
+                                target="_blank"
+                                ><i class="fa-brands fa-github"></i
+                            ></a>
+                            <br />
+                            <a
+                                href="https://twitter.com/Ishan690"
+                                target="_blank"
+                                ><i class="fab fa-twitter"></i
+                            ></a>
+                            <br />
+                            <a
+                                href="https://www.instagram.com/namanshukla9838/"
+                                target="_blank"
+                                ><i class="fab fa-instagram"></i
+                            ></a>
+                            <br />
+                            <a
+                                href="https://www.linkedin.com/in/ishanjswl/"
+                                target="_blank"
+                                ><i class="fab fa-linkedin-in"></i
+                            ></a>
+                        </div>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Suggestions</h4>
+                        <div class="suggestions">
+                            <form>
+                                <div class="input-group">
+                                    <input type="text" id="name" required />
+                                    <label class="sug" for="name"
+                                        ><i class="fa-solid fa-user"></i> Your
+                                        Name</label
+                                    >
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" id="number" required />
+                                    <label class="sug" for="number"
+                                        ><i class="fa-solid fa-phone"></i> Your
+                                        Ph. Number</label
+                                    >
+                                </div>
+                                <div class="input-group">
+                                    <input type="email" id="email" required />
+                                    <label class="sug" for="email"
+                                        ><i class="fa-solid fa-envelope"></i>
+                                        Your Email Id.</label
+                                    >
+                                </div>
+                                <div class="input-group">
+                                    <textarea
+                                        id="message"
+                                        rows="8"
+                                        required
+                                    ></textarea>
+                                    <label class="sug" for="message"
+                                        ><i
+                                            class="fa-sharp fa-solid fa-comments"
+                                        ></i>
+                                        Your Suggestions</label
+                                    >
+                                </div>
+                                <button class="send" type="submit">
+                                    Send
+                                    <i
+                                        class="fa-sharp fa-solid fa-paper-plane"
+                                    ></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="message">&#169; Render Farm 2022-2022</p>
+        </footer>
+    </body>
+</html>

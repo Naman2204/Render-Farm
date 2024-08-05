@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Sign Up Page</title>
+        <link rel="stylesheet" href="{% static 'css/signupstyle.css' %}" />
+    </head>
+    <body>
+        <div class="hero">
+            <h1>Create an account</h1>
+            <div class="signup-box">
+                <div class="left-box">
+                    <form method="post">
+                        {% csrf_token %}
+                        <input
+                            type="text"
+                            placeholder="Username"
+                            required
+                            class="input-box"
+                            name="username"
+                        />
+                        <input
+                            type="email"
+                            placeholder="Your email id"
+                            required
+                            class="input-box"
+                            name="email"
+                        />
+                        <input
+                            type="password"
+                            placeholder="Create Password"
+                            required
+                            class="input-box"
+                            name="password"
+                        />
+                        <input type="checkbox" id="terms" />
+                        <label for="terms">
+                            I accept the terms and conditions.</label
+                        >
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </div>
+            </div>
+            <p class="login-msg">
+                I already have and account?
+                <a href="{% url 'base' %}#signin-p">Login Now</a>
+            </p>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,587 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #1e2934;
+}
+
+.hero {
+    background: #1e2934;
+    width: 100%;
+    color: black;
+    position: relative;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    padding: 20px 4%;
+}
+
+nav .logo {
+    width: 400px;
+    cursor: pointer;
+}
+
+nav ul {
+    flex: 1;
+    text-align: right;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 20px;
+    font-size: 22px;
+    font-family: "Open Sans";
+    font-weight: 300;
+    text-decoration: none;
+    color: #73bd42;
+    position: relative;
+    text-decoration: none;
+    color: #a0a0a0;
+    letter-spacing: 0.5px;
+}
+
+nav ul li a {
+    font-size: 22px;
+    font-family: "Open Sans";
+    font-weight: 300;
+    text-decoration: none;
+    color: #73bd42;
+    position: relative;
+    text-decoration: none;
+    color: #a0a0a0;
+    letter-spacing: 0.5px;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    background-color: #73bd42;
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -10px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+}
+
+nav ul li a:hover:after {
+    width: 100%;
+}
+
+.alert{
+    justify-content: center;
+    display: flex;
+    color: white;
+    font-family: 'OpenSans-Regular';
+    font-size: 50px;
+    margin-top: 10px;
+}
+
+.main {
+    margin: 0;
+    padding: 0;
+    height: 69vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1e2934;
+}
+
+.slider {
+    width: 1192px;
+    height: 670px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.slides {
+    width: 1192%;
+    height: 670px;
+    display: flex;
+}
+
+.slides input {
+    display: none;
+}
+
+.slide {
+    width: 20%;
+    transition: 2s;
+}
+
+.slide img {
+    width: 1192px;
+    height: 670px;
+}
+
+.navigation-manual {
+    position: absolute;
+    width: 1192px;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 2px solid #a5c9ca;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 1s ease-in-out;
+}
+
+.manual-btn:not(:last-child) {
+    margin-right: 40px;
+}
+
+
+.manual-btn:hover {
+    background: #a5c9ca;
+}
+
+#radio1:checked ~ .first {
+    margin-left: 0;
+}
+
+#radio2:checked ~ .first {
+    margin-left: -20%;
+}
+
+#radio3:checked ~ .first {
+    margin-left: -40%;
+}
+
+.navigation-auto div {
+    border: 2px solid #a5c9ca;
+    padding: 5px;
+    border-radius: 10px;
+    transition: ease-in-out 1s;
+}
+
+.navigation-auto div:not(:last-child) {
+    margin-right: 40px;
+}
+
+#radio1:checked ~ .navigation-auto .auto-btn1 {
+    background: #a5c9ca;
+}
+
+#radio2:checked ~ .navigation-auto .auto-btn2 {
+    background: #a5c9ca;
+}
+
+#radio3:checked ~ .navigation-auto .auto-btn3 {
+    background: #a5c9ca;
+}
+
+.text-container {
+    margin-top: 0.5%;
+    text-align: center;
+}
+
+.text-container h3 {
+    color: #f2d06c;
+    font-family: "Fjalla One";
+    font-size: 60px;
+    font-weight: 400;
+}
+
+.text-container p {
+    margin-top: 0.5%;
+    color: #48ceec;
+    padding-left: 275px;
+    padding-right: 275px;
+    font-family: "Open Sans";
+    font-size: 25px;
+    font-weight: 200;
+}
+
+.popup .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -150%) scale(0);
+    width: 300px;
+    height: 450px;
+    z-index: 2;
+    text-align: center;
+    border-radius: 20px;
+    background: #1e2634;
+    box-shadow: 38px 38px 56px #1e2934, -25px -25px 38px #1e2934;
+    z-index: 1;
+}
+
+.popup.close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+    color: azure;
+    font-size: 30px;
+    border-radius: 50%;
+    padding: 2px 5px 7px 5px;
+    background: #1e2934;
+    box-shadow: 5px 5px 15px #1e2934, -5px -5px 15px #343434;
+}
+
+.popup.active.content {
+    transition: all 300ms ease-in-out;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.sign {
+    background: #1e2934;
+    font-family: raleway;
+    height: 150px;
+    color: white;
+    margin: 0;
+}
+
+.popup .content {
+    position: absolute;
+    font-family: "Open Sans";
+    font-weight: 300;
+    color: #48ceec;
+    top: 120%;
+    left: 65%;
+    transform: translate(-50%, -150%) scale(0);
+    width: 300px;
+    height: 450px;
+    z-index: 2;
+    text-align: center;
+    padding: 20px;
+    border-radius: 20px;
+    background: #1e2634;
+    box-shadow: 38px 38px 56px #1e2934, -25px -25px 38px #1e2934;
+    z-index: 1;
+}
+
+.popup .close-btn {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 30px;
+    height: 30px;
+    color: white;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    border-radius: 50%;
+    padding: 2px 5px 7px 5px;
+    background: #1e2934;
+    box-shadow: 5px 5px 15px #1e2934, -5px -5px 15px #1e2934;
+    cursor: pointer;
+}
+
+.popup.active .content {
+    transition: all 300ms ease-in-out;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.team .team_head {
+    color: #f2d06c;
+    font-family: "Fjalla One";
+    font-size: 60px;
+    font-weight: 400;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+a {
+    font-weight: 600;
+    color: white;
+}
+
+.input-field .validate {
+    padding: 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 15px;
+    color: #bfc0c0;
+    background: #1e2634;
+    box-shadow: inset 5px 5px 5px #1e2934, inset -5px -5px 5px #1e2934;
+    outline: none;
+}
+
+.first-button {
+    color: white;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 500;
+    padding: 30px 50px;
+    border-radius: 40px;
+    border: none;
+    position: absolute;
+    top: 118%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1ea54c;
+    box-shadow: 18px 18px 25px #1e2934, -15px -15px 25px #1e2934;
+    transition: box-shadow 0.35s ease !important;
+    outline: none;
+}
+
+.first-button:active {
+    background: linear-gradient(145deg, #73bd42, #087bfc);
+    box-shadow: 5px 5px 10px #1e2634, -5px -5px 10px #1e2634;
+    border: none;
+}
+
+.second-button {
+    color: white;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 20px;
+    padding: 20px 30px;
+    border-radius: 40px;
+    border: none;
+    background: #1ea54c;
+    box-shadow: 8px 8px 15px #1e2934, -8px -8px 15px #1e2934;
+    transition: box-shadow 0.35s ease !important;
+    outline: none;
+}
+
+.second-button:active {
+    background: linear-gradient(145deg, #73bd42, #087bfc);
+    box-shadow: 5px 5px 10px #1e2634, -5px -5px 10px #1e2634;
+    border: none;
+    outline: none;
+}
+p {
+    color: #bfc0c0;
+    font-family: "Open Sans";
+    padding: 20px;
+    font-weight: 400;
+}
+
+.container {
+    padding: 40px;
+    max-width: 1170px;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+ul {
+    list-style: none;
+}
+
+.team-col {
+    height: 100px;
+}
+
+.team-col .fsd {
+    margin-top: 30px;
+    color: #087bfc;
+    font-family: "Fjalla One";
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.team-col .fsdli {
+    display: inline-block;
+    margin-left: 400px;
+}
+
+.team-col .team-name {
+    color: #1ea54c;
+    font-family: "Fjalla One";
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.team-col .name {
+    display: inline-block;
+    margin-left: 550px;
+}
+
+.team-col .team-name-l {
+    color: #1ea54c;
+    font-family: "Fjalla One";
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.team-col .name-l {
+    display: inline-block;
+    margin-left: 650px;
+}
+
+.footer {
+    background-color: #0f141a;
+    /* padding: 140px 0; */
+}
+.footer-col {
+    width: 25%;
+    padding: 0 15px;
+}
+
+.footer-col h4 {
+    font-size: 22px;
+    color: #ffffff;
+    font-family: "Open Sans";
+    font-weight: 400;
+    text-transform: capitalize;
+    margin-bottom: 35px;
+    font-weight: 500;
+    position: relative;
+}
+
+.footer-col h4::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #73bd42;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+.footer-col ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+.footer-col ul li a {
+    font-family: "Open Sans";
+    font-size: 18px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.footer-col ul li .logo {
+    margin-top: 150px;
+    margin-left: -20px;
+    width: 500px;
+}
+
+.footer-col ul li a:hover {
+    color: #ffffff;
+    padding-left: 8px;
+}
+.footer-col .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 0 10px 10px 0;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover {
+    color: #24262b;
+    background-color: #ffffff;
+}
+
+@media (max-width: 767px) {
+    .footer-col {
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+@media (max-width: 574px) {
+    .footer-col {
+        width: 100%;
+    }
+}
+hr {
+    height: 2px;
+    color: #1ea54c;
+}
+
+form {
+    width: 90%;
+    max-width: 600px;
+}
+
+.input-group {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    outline: 0;
+    color: white;
+    border: 1px solid white;
+    border-radius: 20px;
+    background: #0f141a;
+    font-size: 15px;
+}
+
+.sug {
+    height: 100%;
+    font-family: "Open Sans";
+    font-weight: 400;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    color: #cbd6e1;
+    cursor: text;
+}
+
+.send {
+    font-family: "Open Sans";
+    font-weight: 400;
+    padding: 10px 0;
+    color: #1e2634;
+    cursor: pointer;
+    outline: none;
+    background-color: #1ea54c;
+    border: 2px solid #1ea54c;
+    border-radius: 20px;
+    width: 50%;
+    margin-left: 60px;
+    cursor: pointer;
+}
+
+input:focus ~ label,
+input:valid ~ label,
+textarea:focus ~ label,
+textarea:valid ~ label {
+    top: -35px;
+    font-size: 14px;
+}
+
+p.message {
+    justify-content: center;
+    font-family: sans-serif;
+    align-items: center;
+    font-size: 25px;
+    display: flex;
+}
